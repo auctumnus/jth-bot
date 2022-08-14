@@ -1,0 +1,27 @@
+{
+  "name": "jth-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "register-commands": "ts-node ./register-commands.ts",
+    "start": "ts-node ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bufferutil": "^4.0.6",
+    "discord.js": "^14.2.0",
+    "dotenv": "^16.0.1",
+    "erlpack": "github:discord/erlpack",
+    "ts-node": "^10.9.1",
+    "utf-8-validate": "^5.0.9",
+    "zlib-sync": "^0.1.7"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.3",
+    "typescript": "^4.7.4"
+  }
+}
