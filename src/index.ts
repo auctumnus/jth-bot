@@ -109,13 +109,15 @@ const cmds: Record<
     }
     await interaction.reply(
       `The year **${input}** is equivalent to:\n` +
-        years.map(stringifyYear).join('\n') +
-        '\n\\* This system has no information about year length.'
+        years.map(stringifyYear).join('\n') /*+
+        '\n\\* This system has no information about year length.'*/
     )
   },
   duration: async (interaction) => {
     const value = interaction.options.getInteger('value', true)
-    const to = interaction.options.getString('to', true)
+    let to = interaction.options.getString('to', true)
+    if (to === 'e') to = 'earth'
+    if (to === 'j') to = 'jth'
     if (to !== 'earth' && to !== 'jth') {
       await interaction.reply({
         content: 'Type either "earth" or "jth".',

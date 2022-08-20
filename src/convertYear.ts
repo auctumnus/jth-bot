@@ -1,8 +1,11 @@
 const EARTH_HOURS_IN_JTH_DAY = 22.14
 const EARTH_HOURS_IN_EARTH_DAY = 24
 
-const JTH_DAYS_IN_YEAR = 272.75106
+const JTH_DAYS_IN_YEAR = 295.6651
 const EARTH_DAYS_IN_YEAR = 365.2425
+const EARTH_DAYS_IN_JTH_YEAR = 272.75106
+
+const AE_YEARS_PER_CY_YEAR = 295 / 295.665
 
 const systems: {
   name: string
@@ -17,15 +20,17 @@ const systems: {
   {
     name: 'CY',
     currentYear: 4627,
-    yearLengthInJTHDays: 272.751,
+    yearLengthInJTHDays: 295.665,
   },
   {
     name: 'AE',
     currentYear: 839,
+    yearLengthInJTHDays: 295,
   },
   {
     name: 'GA',
     currentYear: 5160,
+    yearLengthInJTHDays: 295,
   },
 ]
 
@@ -68,9 +73,6 @@ const y = (year: number, startSystemName: string, endSystemName: string) => {
 
 export const convertYear = (year: string) => {
   let { system, value } = parse(year)
-  console.log(year)
-  console.log(getSystem(year))
-  console.log(getValue(year))
   if (year === 'now') {
     system = systems[0]
     value = 0
@@ -89,7 +91,7 @@ export const convertYear = (year: string) => {
 }
 
 export const jthYearsToEarthYears = (n: number) =>
-  n / (EARTH_DAYS_IN_YEAR / JTH_DAYS_IN_YEAR)
+  n / (EARTH_DAYS_IN_YEAR / EARTH_DAYS_IN_JTH_YEAR)
 
 export const earthYearsToJthYears = (n: number) =>
-  n * (EARTH_DAYS_IN_YEAR / JTH_DAYS_IN_YEAR)
+  n * (EARTH_DAYS_IN_YEAR / EARTH_DAYS_IN_JTH_YEAR)
